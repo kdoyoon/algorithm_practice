@@ -1,9 +1,0 @@
-def solution(numbers, target):
-    lst = [0]
-    for i in numbers:
-        sub = []
-        for j in lst:
-            sub.append(j + i)
-            sub.append(j - i)
-        lst = sub
-    return lst.count(target)
