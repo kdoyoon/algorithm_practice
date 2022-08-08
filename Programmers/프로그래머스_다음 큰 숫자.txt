@@ -1,0 +1,31 @@
+# bin함수를 몰랐을 때
+## n을 이진법으로 변경
+def two(n):
+    lst = []
+    while n > 0:
+        a = n % 2
+        lst.append(a)
+        n = n//2
+    return lst
+
+def solution(n):
+    lst = []
+    lst = two(n)
+    
+    if len(lst) == sum(lst):
+        total = sum([2**i for i in range(len(lst)+1)])
+        return  total - 2**(len(lst)-1)
+    else:
+        while True:
+            n += 1
+            if sum(lst) == sum(two(n)):
+                break
+        return n
+
+# bin 함수 적용
+
+def solution(n):
+    cnt = bin(n).count('1')
+    for i in range(n+1, 1000001):
+        if bin(i).count('1') == cnt:
+            return i
