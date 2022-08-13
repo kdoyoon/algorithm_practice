@@ -1,0 +1,19 @@
+n = int(input())
+t, p =[], []
+for _ in range(n):
+    x,y = map(int,input().split())
+    t.append(x)
+    p.append(y)
+d = [0] * (n+1)
+time = 0
+max_value = 0
+for i in range(n-1,-1,-1):
+    time = t[i] + i
+    
+    if time <= n:
+        d[i] = max(p[i] + d[time], max_value)
+        max_value = d[i]
+    else:
+        d[i] = max_value
+        
+print(max_value)
