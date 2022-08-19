@@ -1,0 +1,18 @@
+def solution(name):
+    lst = list(name)
+    for i in range(len(lst)):
+        lst[i] = min(ord(lst[i]) - ord("A"),ord("Z") - ord(lst[i])+1)
+        
+    min_move = len(name) - 1
+    total = sum(lst)
+    
+    for i in range(len(lst)):
+        next =i + 1
+        while next < len(name) and name[next] == "A":
+            next += 1
+        min_move = min([min_move,2*i+len(name)-next,i+2*(len(name)-next)])
+        
+    return total + min_move
+        
+        
+    
